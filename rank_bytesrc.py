@@ -26,8 +26,8 @@ def get_contribute():
         nick_name = r_json["data"][0]["nick_name"]
         contribute = r_json["data"][0]["contribute"]
         return nick_name, contribute
-    except Exception:
-        return False
+    except requests.exceptions.ConnectionError:
+        send_err_msg("连接bytesrc异常，检查一下网络问题？")
 
 
 # WebHook地址
@@ -55,16 +55,12 @@ def job():
     if get_contribute():
         nick_name, contribute = get_contribute()
         if nick_name == "":
-            try:
-                raise Exception
-            except Exception:
-                send_err_msg("nick_name为空，检查一下是不是Cookie失效了？")
-        if int(contribute) > contribute_:
-            contribute = contribute - contribute_
-            contribute_ = contribute_ + contribute
-            send_msg(nick_name, contribute, contribute_)
-    else:
-        send_err_msg("连接bytesrc异常，检查一下网络问题？")
+            send_err_msg("nick_name为空，检查一下是不是Cookie失效了？")
+        else:
+            if int(contribute) > contribute_:
+                contribute = contribute - contribute_
+                contribute_ = contribute_ + contribute
+                send_msg(nick_name, contribute, contribute_)
 
 
 # 每5分钟执行一次任务
