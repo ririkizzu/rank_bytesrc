@@ -9,10 +9,10 @@ ByteSRC漏洞通过钉钉提醒
 偶然间看到[@ohlinge](https://github.com/ohlinge "@ohlinge")师傅的`rank_asrc`项目，感觉挺好用的，按照他的思路，写了一个ByteSRC漏洞审核提醒的脚本，因为邮件提醒可能不够及时，所以改成用钉钉机器人来进行提醒
 
 ### Usage
- - 修改初始化个人总积分
- - 修改个人ByteSRC账户登录Cookie
+根据自己的设置替换`xxx`
+ - 设置ByteSRC登录Cookie
  - 修改钉钉机器人WebHook地址和"加签"
- - 请求频率默认为5分钟一次，可修改：schedule.every(5).minutes.do(job)
+ - 请求频率默认为10分钟一次，可修改：schedule.every(10).minutes.do(job)
 
 Linux命令后台运行
 ```
