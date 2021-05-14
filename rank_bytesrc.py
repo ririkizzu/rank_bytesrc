@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: UTF-8 -*-
 # Author: Ririkizzu
 # Date: 2021/1/1
 
@@ -20,7 +18,7 @@ secret = "xxx"
 
 
 def job():
-    url = "https://security.bytedance.com/user/ajax/auth/get_user_information/"
+    url = "https://src.bytedance.com/user/ajax/auth/get_user_information/"
     headers = {
         "Cookie": "sessionid=" + sessionid
     }
@@ -49,7 +47,7 @@ bot_bytesrc = DingtalkChatbot(webhook, secret)
 # 积分增加时发送钉钉提醒
 def send_msg(nick_name, contribute, contribute_):
     bot_bytesrc.send_link(title="{}，您的洞审核通过啦！".format(nick_name), text="增加{}分，".format(contribute) + "目前总分{}分".format(
-        contribute_), message_url="https://security.bytedance.com/honor/rank/")
+        contribute_), message_url="https://src.bytedance.com/honor/rank/")
 
 
 # 发生异常时钉钉提醒
